@@ -103,3 +103,35 @@ with tf.Session() as sess:
 
 print("Best theta is: ")
 print(best_theta)
+
+
+"""Once again, same as before, but using TensorFlow's optimizer functions
+"""
+
+# Theta are initially a lot of random variables between -1 and 1
+theta = tf.Variable(tf.random_uniform([n + 1, 1], -1.0, 1.0), name="theta")
+
+# Matrix Multiplication
+y_pred = tf.matmul(X, theta, name="predictions")
+error = y_pred - y
+mse = tf.reduce_mean(tf.square(error), name="mse")
+
+# Gradient function:
+optimizer = tf.train.GradientDescentOptimizer(learning_rate=learning_rate)
+training_op = optimizer.minimize(mse)
+
+
+init = tf.global_variables_initializer()
+
+with tf.Session() as sess:
+    sess.run(init)
+
+    for epoch in range(n_epochs):
+        if epoch % 100 == 0:
+            print("Epoch", epoch, "MSE = ", mse.eval())
+        sess.run(training_op)
+
+    best_theta = theta.eval(session=sess)
+
+print("Best theta is: ")
+print(best_theta)
