@@ -1,6 +1,5 @@
 import tensorflow as tf
 
-# Create a computational graph, but doesn't actually do any operations.
 w = tf.constant(3)
 x = w + 2
 y = x + 5
