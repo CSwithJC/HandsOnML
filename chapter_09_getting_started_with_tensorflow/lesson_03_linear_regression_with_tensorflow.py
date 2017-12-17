@@ -1,6 +1,6 @@
 import tensorflow as tf
 import numpy as np
-from sklearn.datasets import  fetch_california_housing
+from sklearn.datasets import fetch_california_housing
 
 """TensorFlow operations (called ops) can take any number of inputs and
 produce any number of outputs. Constants and variables take no input (these
