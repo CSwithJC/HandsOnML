@@ -93,3 +93,6 @@ for relu_index in range(5):
     with tf.variable_scope("relu", reuse=(relu_index >= 1)) as scope:
         relus.append(relu(X))
 output = tf.add_n(relus, name="output")
+
+file_writer = tf.summary.FileWriter("logs/relu9", tf.get_default_graph())
+file_writer.close()
